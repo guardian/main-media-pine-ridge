@@ -8,11 +8,21 @@
     flex-direction: column;
 }
 
+.video__logo-spacing {
+    height: 40px;
+    background-color: #222;
+    width: 100%;
+
+    @include mq(tablet) {
+        display: none;
+    }
+}
+
 .video__content {
     padding: 6px 0 32px 0;
     flex-grow: 1;
     flex-shrink: 1;
-    color: #333;
+    background-color: #333;
 }
 
 .video__content-inner,
@@ -20,11 +30,11 @@
     max-width: 620px;
 
     @include mq(leftCol) {
-        margin-left: 160px;
+        margin-left: 180px;
     }
 
     @include mq(wide) {
-        margin-left: 240px;
+        margin-left: 260px;
     }
 }
 
@@ -119,9 +129,13 @@
 
 .video__cta {
     position: absolute;
-    bottom: 24px;
+    bottom: 12px;
     left: 0;
     right: 0;
+
+    @include mq(tablet) {
+        bottom: 24px;
+    }
 }
 
 .video__button {
