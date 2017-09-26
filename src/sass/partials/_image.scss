@@ -1,40 +1,64 @@
 .video {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 3000;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
 
-    @media screen and (orientation: portrait) {
-        max-height: 100%;
+.video__content {
+    padding: 6px 0 32px 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: #333;
+}
+
+.video__content-inner,
+.video__cta-inner {
+    max-width: 620px;
+
+    @include mq(leftCol) {
+        margin-left: 160px;
+    }
+
+    @include mq(wide) {
+        margin-left: 240px;
     }
 }
 
-h1 {
+.video__headline {
     -webkit-font-smoothing: antialiased;
     font-family: 'Guardian Egyptian Web';
     color: #fff;
     margin: 0;
     margin-top: 8px;
     margin-bottom: 8px;
-    font-size: 64px;
+    font-size: 32px;
     line-height: 1;
-    font-weight: normal;
+    font-weight: 200;
+
+    @include mq(tablet) {
+        font-size: 64px;
+    }
 }
 
-p {
+.video__standfirst {
+    -webkit-font-smoothing: antialiased;
     font-family: 'Guardian Egyptian Web';
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     font-weight: normal;
     color: #fff;
     margin: 0;
     margin-top: 24px;
     position: relative;
+
+    @include mq(tablet) {
+        font-size: 18px;
+        line-height: 1.4;
+    }
 
     &:before {
         content: '';
@@ -47,27 +71,57 @@ p {
     }
 }
 
-.video__cta {
-    position: absolute;
-    bottom: 22px;
-    left: 10px;
-    width: 100%;
-    z-index: 7000;
+.video__video {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
 
-    @include mq(mobileLandscape) {
-        left: 20px;
+    @include mq(tablet) {
+        height: 500px;
+    }
+
+    @include mq(desktop) {
+        height: 551px;
+    }
+
+    @include mq(leftCol) {
+        height: 640px;
+    }
+
+    @include mq(wide) {
+        height: 731px;
     }
 }
 
-.video__headline {
-    position: relative;
-    z-index: 7000;
-    background-color: rgba(0, 0, 0, .5);
-    padding: 6px 0 24px 0;
+.video__preview {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
-.video__content {
-    max-width: 620px;
+.video__embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8000;
+    pointer-events: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3 ease-out;
+
+    .has-clicked & {
+        pointer-events: auto;
+        opacity: 1;
+    }
+}
+
+.video__cta {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
 }
 
 .video__button {
@@ -98,30 +152,18 @@ p {
 .video__label {
     color: #fb0;
     font-family: "Guardian Egyptian Web";
+    -webkit-font-smoothing: antialiased;
     font-weight: normal;
-    font-size: 24px;
-    line-height: 1.1;
-    padding-top: 17px;
+    font-size: 18px;
+    line-height: 1.2;
+    padding-top: 19px;
+
+    @include mq(tablet) {
+        font-size: 18px;
+    }
 
     span {
         color: #fff;
         display: block;
     }
-}
-
-.video__embed {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 8000;
-    pointer-events: none;
-    transition: opacity .3s ease-out;
-}
-
-.has-clicked .video__embed {
-    pointer-events: auto;
-    opacity: 1;
 }

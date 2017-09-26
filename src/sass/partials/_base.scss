@@ -17,7 +17,9 @@ body, html {
 }
 
 @include mq(mobileLandscape) {
-    padding: 0 20px;
+    .gs-container {
+        padding: 0 20px;
+    }
 }
 
 @include mq(tablet) {
